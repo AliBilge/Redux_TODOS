@@ -1,6 +1,6 @@
 import {combineReducers,createStore, applyMiddleware} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
-import {todoReducer} from "./TODOS/reducer";
+import {todoReducer} from "../Store/TODOS/reducer";
 
 
 const rootReducer = combineReducers({

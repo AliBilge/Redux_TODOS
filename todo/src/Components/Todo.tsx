@@ -38,21 +38,22 @@ export class Todo extends React.Component<ITodoProps>
   render () {
     return (
       <Grid>
-        <Grid.Row>
+        <Grid.Row centered>
           <Form onSubmit={this.newTask}>
             <Form.Field>
               <label htmlFor="todo-input">Enter New Todos</label>
               <Input name="todo-input" type='text' />
             </Form.Field>
-            <Input type="submit" value="Add" />
+            <Input type="submit" value="Add to list" />
           </Form>
         </Grid.Row>
-        <h3>New Task List</h3>
+        <h3>New Todos List</h3>
+        <Grid.Row centered>
         <ul>
           { this.props.tasks.map( element => (
               <li>
                 {element.name}
-                <Button size='large' color='green'
+                <Button size='tiny' color='green'
                   onClick={(event) => {
                     this.deleteTask( element.id )
                 }}>
@@ -61,6 +62,7 @@ export class Todo extends React.Component<ITodoProps>
               </li>
           ) ) }
         </ul>
+        </Grid.Row>
       </Grid>
     );
   }

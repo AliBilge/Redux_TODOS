@@ -1,15 +1,17 @@
-import { InventoryActionTypes, ADD_ITEM_TO_INVENTORY, REMOVE_ITEM_FROM_INVENTORY, Item } from './types';
+import { TodoActionTypes, ADD_TASK_TO_LIST, REMOVE_TASK_FROM_LIST, Task } from './types';
 
-export function removeItemFromInventory ( id: number ): InventoryActionTypes {
+export function removeTaskFromList ( id: number ): 
+TodoActionTypes {
   return {
-    type: REMOVE_ITEM_FROM_INVENTORY,
-    payload: id // Will only accept type: number
+    type: REMOVE_TASK_FROM_LIST,
+    payload: id 
   }
 }
 
-export function addItemToInventory ( item: Item ): InventoryActionTypes {
+export function addTaskToList ( task: Task ): 
+TodoActionTypes {
   return {
-    type: ADD_ITEM_TO_INVENTORY,
-    payload: item // Will only accept type: Item
+    type: ADD_TASK_TO_LIST,
+    payload: task 
   }
 }

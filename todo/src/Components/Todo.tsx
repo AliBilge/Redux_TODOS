@@ -11,55 +11,53 @@ export interface ITodoProps {
   items: Task[]
 }
 
-export class Inventory extends React.Component<IInventoryProps>
+export class Todo extends React.Component<ITodoProps>
 {
   generateID = (): number => {
     let randomNumber: number = Math.floor( Math.random() * 1000 );
     randomNumber += this.props.items.length;
     return randomNumber;
   }
-  newProduct = ( event: any ) => {
+  newTask = ( event: any ) => {
     event.preventDefault();
     // Handle retrieval of form field value.
-    const formField: HTMLInputElement | null = document.querySelector( '[name="product-name"]' );
+    const formField: 
+    HTMLInputElement | null = document.querySelector( '[name="todo-input"]' );
     let formFieldValue: string = '';
     if ( formField !== null ) formFieldValue = formField.value;
-    // Add new item to inventory.
-    this.props.addItemToInventory( {
+    // Add new Todos to the list.
+    this.props.addTaskToList( {
       id: this.generateID(),
       name: formFieldValue
     } );
   }
-  deleteProduct = ( id: number ) => {
-    // Remove this product by the ID!
-    this.props.removeItemFromInventory( id );
+
+  // Remove the Task by the ID number
+  deleteTask = ( id: number ) => {
+    this.props.removeTaskFromList(id);
   }
-  render ()
-  {
+  render () {
     return (
       <Grid>
         <Grid.Row>
-          <Form onSubmit={this.newProduct}>
+          <Form onSubmit={this.newTask}>
             <Form.Field>
-              <label htmlFor="product-name">Enter Product Name</label>
-              <Input name="product-name" type='text' />
+              <label htmlFor="todo-input">Enter New Todos</label>
+              <Input name="todo-input" type='text' />
             </Form.Field>
             <Input type="submit" value="Add" />
           </Form>
         </Grid.Row>
-        <h3>Products</h3>
+        <h3>New Task List</h3>
         <ul>
-          {/* Loop through our REDUX product items... */}
           { this.props.items.map( element => (
               <li>
                 {element.name}
-                <Button
-                  size='mini'
-                  color='red'
-                  onClick={event => {
-                    this.deleteProduct( element.id )
+                <Button size='large' color='green'
+                  onClick={(event) => {
+                    this.deleteTask( element.id )
                 }}>
-                  &times;
+                  Delete
                 </Button>
               </li>
           ) ) }
@@ -69,15 +67,15 @@ export class Inventory extends React.Component<IInventoryProps>
   }
 }
 
-// Retrieve "items" from our "global" redux state.
+// redux task state.
 const mapStateToProps = ( state: RootState ) => {
   return {
-    items: state.inventory.items
+    items: state.todo.items
   }
 }
 
-// Connect Redux and React using our values and "view!"
+// Combine react and redux
 export default connect(
   mapStateToProps,
-  { addItemToInventory, removeItemFromInventory }
-)( Inventory );
+  { addTaskToList, removeTaskFromList }
+)( Todo );

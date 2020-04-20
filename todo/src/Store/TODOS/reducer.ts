@@ -1,37 +1,29 @@
-import { InventoryState, REMOVE_ITEM_FROM_INVENTORY, ADD_ITEM_TO_INVENTORY, InventoryActionTypes } from './types';
+import { TaskListState, REMOVE_TASK_FROM_LIST, ADD_TASK_TO_LIST, 
+  TodoActionTypes } from './types';
 
-// Set up a default or "initial" state for our app.
-const initialState: InventoryState = {
+// Set up a default or "initial" Todo state.
+const initialState: TaskListState = {
   items: [
     {
       id: 1,
-      name: 'Socks'
-    },
-    {
-      id: 2,
-      name: 'Pants'
-    },
-    {
-      id: 3,
-      name: 'Shoes'
+      name: 'Todo something'
     }
   ]
 }
 
-// Now to set up our reducer / functionality!
-export function inventoryReducer ( state = initialState, action: InventoryActionTypes ) {
+export function todoReducer ( state = initialState, action: TodoActionTypes ) {
   switch ( action.type ) {
-    case REMOVE_ITEM_FROM_INVENTORY:
+    case REMOVE_TASK_FROM_LIST:
       return {
         ...state,
         // Filter through, and return the array WITHOUT the matching ID.
-        items: state.items.filter( item => item.id !== action.payload )
+        tasks: state.tasks.filter( task => task.id !== action.payload )
       }
-    case ADD_ITEM_TO_INVENTORY:
+    case ADD_TASK_TO_LIST:
       return {
         ...state,
-        // Add one new item onto the end of our array!
-        items: [ ...state.items, action.payload ]
+        // Add NEW task
+        tasks: [ ...state.tasks, action.payload ]
       }
     default:
       return state;

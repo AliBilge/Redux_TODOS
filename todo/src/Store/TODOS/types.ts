@@ -1,26 +1,26 @@
-export interface Item {
+export interface Task {
     id: number,
     name: string
   }
   
-  export interface InventoryState {
-    items: Item[]
+  export interface TaskListState {
+    tasks: Task[]
   }
   
-  // Action "names" or types.
-  export const REMOVE_ITEM_FROM_INVENTORY = 'REMOVE_ITEM_FROM_INVENTORY';
-  export const ADD_ITEM_TO_INVENTORY = 'ADD_ITEM_TO_INVENTORY';
+  export const REMOVE_TASK_FROM_LIST = 'REMOVE_TASK_FROM_LIST';
+  export const ADD_TASK_TO_LIST = 'ADD_TASK_TO_LIST';
   
-  // Define action requirements.
+  // Define action.
   
-  interface RemoveItemFromInventory {
-    type: typeof REMOVE_ITEM_FROM_INVENTORY,
-    payload: number // This will match our Item ID.
+  interface RemovetASKFromlIST {
+    type: typeof REMOVE_TASK_FROM_LIST,
+    payload: number
   }
   
-  interface AddItemToInventory {
-    type: typeof ADD_ITEM_TO_INVENTORY,
-    payload: Item // We need to pass a new Item that should be added to our store.
+  interface AddTaskToList {
+    type: typeof ADD_TASK_TO_LIST,
+    payload: Task
   }
   
-  export type InventoryActionTypes = RemoveItemFromInventory | AddItemToInventory;
+  export type 
+  TodoActionTypes = RemoveTaskFromList | AddTaskToList;

@@ -1,11 +1,19 @@
 import React from 'react';
-import './App.css';
+import { Grid } from 'semantic-ui-react';
+import Todo from './Components/Todo';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Grid centered>
+      <Grid.Row>
+        <h1>React-Redux TODO List</h1>
+      </Grid.Row>
+
+      <Grid.Row>
+        <Todo />
+      </Grid.Row>
+    
+    </Grid>
   );
 }
 

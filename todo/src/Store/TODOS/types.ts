@@ -12,7 +12,7 @@ export interface Task {
   
   // Define action.
   
-  interface RemovetASKFromlIST {
+  interface RemoveTaskFromList {
     type: typeof REMOVE_TASK_FROM_LIST,
     payload: number
   }
@@ -22,5 +22,4 @@ export interface Task {
     payload: Task
   }
   
-  export type 
-  TodoActionTypes = RemoveTaskFromList | AddTaskToList;
+  export type TodoActionTypes = RemoveTaskFromList | AddTaskToList;

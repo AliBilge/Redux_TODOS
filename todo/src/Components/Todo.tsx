@@ -1,7 +1,7 @@
 import React from 'react';
 import { RootState } from '../Store/index'
-import { removeItemFromInventory, addItemToInventory } from '../store/inventory/action';
-import { Item } from '../store/TODOS/types';
+import { removeTaskFromList, addTaskToList } from '../Store/TODOS/action';
+import { Task } from '../Store/TODOS/types';
 import { Grid, Form, Input, Button, Card } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
@@ -20,7 +20,6 @@ export class Todo extends React.Component<ITodoProps>
   }
   newTask = ( event: any ) => {
     event.preventDefault();
-    // Handle retrieval of form field value.
     const formField: 
     HTMLInputElement | null = document.querySelector( '[name="todo-input"]' );
     let formFieldValue: string = '';

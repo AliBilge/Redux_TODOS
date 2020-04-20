@@ -3,7 +3,7 @@ export interface Task {
     name: string
   }
   
-  export interface TaskListState {
+  export interface TodoState {
     tasks: Task[]
   }
   

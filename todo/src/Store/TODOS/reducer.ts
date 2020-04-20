@@ -1,9 +1,9 @@
-import { TaskListState, REMOVE_TASK_FROM_LIST, ADD_TASK_TO_LIST, 
+import { TodoState, REMOVE_TASK_FROM_LIST, ADD_TASK_TO_LIST, 
   TodoActionTypes } from './types';
 
 // Set up a default or "initial" Todo state.
-const initialState: TaskListState = {
-  items: [
+const initialState: TodoState = {
+  tasks: [
     {
       id: 1,
       name: 'Todo something'

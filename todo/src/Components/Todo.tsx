@@ -2,20 +2,20 @@ import React from 'react';
 import { RootState } from '../Store/index'
 import { removeTaskFromList, addTaskToList } from '../Store/TODOS/action';
 import { Task } from '../Store/TODOS/types';
-import { Grid, Form, Input, Button, Card } from 'semantic-ui-react';
+import { Grid, Form, Input, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 export interface ITodoProps {
   removeTaskFromList: typeof removeTaskFromList,
   addTaskToList: typeof addTaskToList,
-  items: Task[]
+  tasks: Task[]
 }
 
 export class Todo extends React.Component<ITodoProps>
 {
   generateID = (): number => {
     let randomNumber: number = Math.floor( Math.random() * 1000 );
-    randomNumber += this.props.items.length;
+    randomNumber += this.props.tasks.length;
     return randomNumber;
   }
   newTask = ( event: any ) => {
@@ -49,7 +49,7 @@ export class Todo extends React.Component<ITodoProps>
         </Grid.Row>
         <h3>New Task List</h3>
         <ul>
-          { this.props.items.map( element => (
+          { this.props.tasks.map( element => (
               <li>
                 {element.name}
                 <Button size='large' color='green'
@@ -69,7 +69,7 @@ export class Todo extends React.Component<ITodoProps>
 // redux task state.
 const mapStateToProps = ( state: RootState ) => {
   return {
-    items: state.todo.items
+    tasks: state.todo.tasks
   }
 }
 
@@ -77,4 +77,4 @@ const mapStateToProps = ( state: RootState ) => {
 export default connect(
   mapStateToProps,
   { addTaskToList, removeTaskFromList }
-)( Todo );
+)(Todo);
